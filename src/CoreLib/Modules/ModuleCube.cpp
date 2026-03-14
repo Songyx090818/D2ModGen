@@ -131,6 +131,11 @@ void ModuleCube::generate(DataContext& output, RandomGenerator& rng, const Input
         uber2["input 2"]   = "\"isc,qty=3\"";
         uber2["output"]    = "Pandemonium Finale Portal";
 
+        StringMap uber3    = base;
+        uber2["numinputs"] = "5";
+        uber2["input 2"]   = "\"isc,qty=4\"";
+        uber2["output"]    = "\"Red Portal,lvl=137,qty=1\"";
+
         view.appendRow(cows);
         view.appendRow(uber1);
         view.appendRow(uber2);
