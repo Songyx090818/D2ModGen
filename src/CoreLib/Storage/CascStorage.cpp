@@ -19,7 +19,11 @@ IStorage::StoredData CascStorage::readData(const RequestInMemoryList& filenames)
     const std::string  utf8path = m_storageRoot;
     const std::wstring wdata    = string2path(utf8path).wstring();
     HANDLE             storage;
-    if (!CascOpenStorage(wdata.c_str(), 0, &storage)) {
+
+    CASC_OPEN_STORAGE_ARGS openArgs = { sizeof(CASC_OPEN_STORAGE_ARGS) };
+
+    openArgs.dwFlags = CASC_FEATURE_ALLOW_DOWNLOAD;
+    if (!CascOpenStorageEx(wdata.c_str(), &openArgs, false, &storage)) {
         Logger(Logger::Warning) << "failed to open storage:" << utf8path << ", err=" << GetCascError();
         return {};
     }

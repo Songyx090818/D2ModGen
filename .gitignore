@@ -27,7 +27,7 @@
 *.exe
 *.out
 *.app
-/*.user
+*.user
 
 build/
 .vscode/
